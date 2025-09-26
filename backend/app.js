@@ -1,11 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
-// Cria o app Express
 const app = express();
-
-// Middleware de CORS
 app.use(cors());
 
 // Rotas
@@ -17,13 +13,12 @@ app.use('/api/politicos', politicosRouter);
 app.use('/api/noticias', noticiasRouter);
 app.use('/api/busca', buscaRouter);
 
-// Exporta para ser usado pelo server.js ou diretamente
-module.exports = app;
+// Healthcheck
+app.get('/health', (req, res) => res.json({ ok: true }));
 
-// Se rodar diretamente (ex: `node app.js`)
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`✅ API rodando na porta ${PORT}`);
-  });
+  app.listen(PORT, () => console.log(`✅ API rodando na porta ${PORT}`));
 }
+
+module.exports = app;

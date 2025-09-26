@@ -14,8 +14,18 @@
     "foto": "",
     "biografia": "Deputada federal comprometida com meio ambiente e educação.",
     "votacoes": [
-      { "id": "v1", "assunto": "Projeto meio ambiente", "data": "2025-08-10", "voto": "Sim" },
-      { "id": "v2", "assunto": "Reforma tributária", "data": "2025-07-22", "voto": "Não" }
+      {
+        "id": "v1",
+        "assunto": "Projeto meio ambiente",
+        "data": "2025-08-10",
+        "voto": "Sim"
+      },
+      {
+        "id": "v2",
+        "assunto": "Reforma tributária",
+        "data": "2025-07-22",
+        "voto": "Não"
+      }
     ]
   },
   {
@@ -33,7 +43,12 @@
     "foto": "",
     "biografia": "Senador por dois mandatos, foco em infraestrutura.",
     "votacoes": [
-      { "id": "v3", "assunto": "Pacote infraestrutura", "data": "2025-06-15", "voto": "Sim" }
+      {
+        "id": "v3",
+        "assunto": "Pacote infraestrutura",
+        "data": "2025-06-15",
+        "voto": "Sim"
+      }
     ]
   }
 ]

@@ -4,39 +4,27 @@ const path = require('path');
 const fs = require('fs');
 
 const DATA_FILE = path.join(__dirname, '..', 'data', 'politicos.json');
-
-// Garante que o arquivo exista
-if (!fs.existsSync(DATA_FILE)) {
-  fs.writeFileSync(DATA_FILE, '[]', 'utf8');
-}
+if (!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE, '[]', 'utf8');
 
 // GET /api/politicos
 router.get('/', (req, res) => {
   fs.readFile(DATA_FILE, 'utf8', (err, raw) => {
     if (err) return res.status(500).json({ error: 'Não foi possível ler politicos.json' });
-
     try {
       let data = JSON.parse(raw);
-
       const { cargo, estado, partido, nome, page = 1, limit = 20 } = req.query;
 
-      if (cargo) data = data.filter(p => p.cargo?.toLowerCase().includes(cargo.toLowerCase()));
-      if (estado) data = data.filter(p => p.estado?.toLowerCase() === estado.toLowerCase());
-      if (partido) data = data.filter(p => p.partido?.toLowerCase() === partido.toLowerCase());
-      if (nome) data = data.filter(p => p.nome?.toLowerCase().includes(nome.toLowerCase()));
+      if (cargo)  data = data.filter(p => (p.cargo   ||'').toLowerCase().includes(cargo.toLowerCase()));
+      if (estado) data = data.filter(p => (p.estado  ||'').toLowerCase() === estado.toLowerCase());
+      if (partido)data = data.filter(p => (p.partido ||'').toLowerCase() === partido.toLowerCase());
+      if (nome)   data = data.filter(p => (p.nome    ||'').toLowerCase().includes(nome.toLowerCase()));
 
       const pageNum = parseInt(page, 10);
       const limitNum = parseInt(limit, 10);
       const start = (pageNum - 1) * limitNum;
-      const end = start + limitNum;
-      const pagedData = data.slice(start, end);
+      const pagedData = data.slice(start, start + limitNum);
 
-      res.json({
-        total: data.length,
-        page: pageNum,
-        limit: limitNum,
-        results: pagedData
-      });
+      res.json({ total: data.length, page: pageNum, limit: limitNum, results: pagedData });
     } catch {
       res.status(500).json({ error: 'Arquivo politicos.json inválido' });
     }

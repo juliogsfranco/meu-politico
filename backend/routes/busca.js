@@ -6,7 +6,6 @@ const fs = require('fs');
 const POLITICOS_FILE = path.join(__dirname, '..', 'data', 'politicos.json');
 const NOTICIAS_FILE = path.join(__dirname, '..', 'data', 'noticias.json');
 
-// Garante que os arquivos existam
 if (!fs.existsSync(POLITICOS_FILE)) fs.writeFileSync(POLITICOS_FILE, '[]', 'utf8');
 if (!fs.existsSync(NOTICIAS_FILE)) fs.writeFileSync(NOTICIAS_FILE, '[]', 'utf8');
 
@@ -16,24 +15,19 @@ router.get('/', (req, res) => {
   if (!q) return res.status(400).json({ error: 'Parâmetro q é obrigatório' });
 
   try {
-    let politicos = [];
-    if (fs.existsSync(POLITICOS_FILE)) {
-      politicos = JSON.parse(fs.readFileSync(POLITICOS_FILE, 'utf8'));
-      politicos = politicos.filter(p =>
-        p.nome?.toLowerCase().includes(q.toLowerCase()) ||
-        p.partido?.toLowerCase().includes(q.toLowerCase()) ||
-        p.estado?.toLowerCase().includes(q.toLowerCase())
-      ).slice(0, limit);
-    }
+    let politicos = JSON.parse(fs.readFileSync(POLITICOS_FILE, 'utf8'));
+    let noticias  = JSON.parse(fs.readFileSync(NOTICIAS_FILE,  'utf8'));
 
-    let noticias = [];
-    if (fs.existsSync(NOTICIAS_FILE)) {
-      noticias = JSON.parse(fs.readFileSync(NOTICIAS_FILE, 'utf8'));
-      noticias = noticias.filter(n =>
-        n.titulo?.toLowerCase().includes(q.toLowerCase()) ||
-        n.fonte?.toLowerCase().includes(q.toLowerCase())
-      ).slice(0, limit);
-    }
+    politicos = politicos.filter(p =>
+      (p.nome||'').toLowerCase().includes(q.toLowerCase()) ||
+      (p.partido||'').toLowerCase().includes(q.toLowerCase()) ||
+      (p.estado||'').toLowerCase().includes(q.toLowerCase())
+    ).slice(0, limit);
+
+    noticias = noticias.filter(n =>
+      (n.titulo||'').toLowerCase().includes(q.toLowerCase()) ||
+      (n.fonte ||'').toLowerCase().includes(q.toLowerCase())
+    ).slice(0, limit);
 
     res.json({ query: q, politicos, noticias });
   } catch {
