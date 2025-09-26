@@ -5,13 +5,10 @@ const app = express();
 app.use(cors());
 
 // Rotas
-const politicosRouter = require('./routes/politicos');
-const noticiasRouter = require('./routes/noticias');
-const buscaRouter = require('./routes/busca');
-
-app.use('/api/politicos', politicosRouter);
-app.use('/api/noticias', noticiasRouter);
-app.use('/api/busca', buscaRouter);
+app.use('/api/camara', require('./routes/camara'));
+app.use('/api/senado', require('./routes/senado'));
+app.use('/api/noticias', require('./routes/noticias'));
+app.use('/api/busca', require('./routes/busca'));
 
 // Healthcheck
 app.get('/health', (req, res) => res.json({ ok: true }));
