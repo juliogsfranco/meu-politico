@@ -1,18 +1,31 @@
 {
   "name": "meu-politico-backend",
   "version": "1.0.0",
+  "description": "Backend do portal Meu Político",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "sync:camara": "node scripts/sync-camara.js",
-    "sync:senado": "node scripts/sync-senado.js",
-    "sync:all": "node scripts/sync-all.js",
-    "sync:news": "node scripts/sync-news.js"
+    "dev": "nodemon app.js",
+    "sync:camara": "node scripts/sync_camara.js",
+    "sync:senado": "node scripts/sync_senado.js",
+    "sync:news": "node scripts/sync_news.js"
   },
+  "keywords": [
+    "politica",
+    "api",
+    "brasil",
+    "camara",
+    "senado"
+  ],
+  "author": "Julio Franco",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^1.7.0",
+    "axios": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
