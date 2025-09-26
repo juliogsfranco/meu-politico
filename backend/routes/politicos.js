@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 
-const DATA_FILE = path.join(__dirname, '..', 'data', 'politicos.json');
+const DATA_FILE = path.join(__dirname, 'data', 'politicos.json');
 
 // GET /api/politicos (com filtros e paginação)
 router.get('/', (req, res) => {
