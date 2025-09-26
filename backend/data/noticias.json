@@ -1,1 +1,16 @@
-[{"id":"n-001","titulo":"Maria Silva propõe projeto"}]
+[
+  {
+    "id": "n-001",
+    "titulo": "Maria Silva propõe projeto de proteção florestal",
+    "fonte": "Portal Exemplo",
+    "data": "2025-09-20",
+    "link": "https://exemplo.com/noticia/maria-silva-projeto"
+  },
+  {
+    "id": "n-002",
+    "titulo": "João Pereira defende investimento em estradas",
+    "fonte": "Jornal Demo",
+    "data": "2025-08-18",
+    "link": "https://exemplo.com/noticia/joao-pereira-estradas"
+  }
+]

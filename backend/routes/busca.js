@@ -3,10 +3,10 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 
-const POLITICOS_FILE = path.join(__dirname, 'data', 'politicos.json');
-const NOTICIAS_FILE = path.join(__dirname, 'data', 'noticias.json');
+const POLITICOS_FILE = path.join(__dirname, '..', 'data', 'politicos.json');
+const NOTICIAS_FILE = path.join(__dirname, '..', 'data', 'noticias.json');
 
-// Garante que os arquivos existem
+// Garante que os arquivos existam
 if (!fs.existsSync(POLITICOS_FILE)) fs.writeFileSync(POLITICOS_FILE, '[]', 'utf8');
 if (!fs.existsSync(NOTICIAS_FILE)) fs.writeFileSync(NOTICIAS_FILE, '[]', 'utf8');
 

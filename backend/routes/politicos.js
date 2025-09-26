@@ -3,9 +3,9 @@ const router = express.Router();
 const path = require('path');
 const fs = require('fs');
 
-const DATA_FILE = path.join(__dirname, 'data', 'politicos.json');
+const DATA_FILE = path.join(__dirname, '..', 'data', 'politicos.json');
 
-// Garante que o arquivo existe
+// Garante que o arquivo exista
 if (!fs.existsSync(DATA_FILE)) {
   fs.writeFileSync(DATA_FILE, '[]', 'utf8');
 }

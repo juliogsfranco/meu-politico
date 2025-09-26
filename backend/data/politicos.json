@@ -1,1 +1,39 @@
-[{"id":"dep-001","nome":"Maria Silva"}]
+[
+  {
+    "id": "dep-001",
+    "nome": "Maria Silva",
+    "partido": "PSB",
+    "estado": "SP",
+    "cargo": "Deputado Federal",
+    "email": "maria.silva@camaradeputados.gov.br",
+    "telefone": "(61) 1234-5678",
+    "redes": {
+      "twitter": "maria_silva",
+      "instagram": "mariasilva_oficial"
+    },
+    "foto": "",
+    "biografia": "Deputada federal comprometida com meio ambiente e educação.",
+    "votacoes": [
+      { "id": "v1", "assunto": "Projeto meio ambiente", "data": "2025-08-10", "voto": "Sim" },
+      { "id": "v2", "assunto": "Reforma tributária", "data": "2025-07-22", "voto": "Não" }
+    ]
+  },
+  {
+    "id": "sen-001",
+    "nome": "João Pereira",
+    "partido": "PSL",
+    "estado": "RJ",
+    "cargo": "Senador",
+    "email": "joao.pereira@senado.leg.br",
+    "telefone": "(61) 9876-5432",
+    "redes": {
+      "twitter": "joaopereira",
+      "instagram": "joaopereira_oficial"
+    },
+    "foto": "",
+    "biografia": "Senador por dois mandatos, foco em infraestrutura.",
+    "votacoes": [
+      { "id": "v3", "assunto": "Pacote infraestrutura", "data": "2025-06-15", "voto": "Sim" }
+    ]
+  }
+]
