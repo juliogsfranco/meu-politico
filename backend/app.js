@@ -9,6 +9,7 @@ app.use('/api/camara', require('./routes/camara'));
 app.use('/api/senado', require('./routes/senado'));
 app.use('/api/noticias', require('./routes/noticias'));
 app.use('/api/busca', require('./routes/busca'));
+app.use('/api/votacoes', require('./routes/votacoes'));
 
 // Healthcheck
 app.get('/health', (req, res) => res.json({ ok: true }));
